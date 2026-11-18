@@ -52,10 +52,17 @@
 
 ```text
 agrivision/
+├── .github/
+│   └── workflows/
+│       └── ci.yml               # GitHub Actions CI build & test pipeline
+├── .env.example                 # Configuration template for frontend & backend
+├── requirements.txt             # Python ML/FastAPI dependencies
 ├── index.html                   # HTML entry with Plus Jakarta Sans & Outfit fonts
-├── package.json                 # Dependencies (React, Lucide icons, Canvas Confetti)
+├── package.json                 # Node dependencies (React, Lucide icons, Vite)
 ├── tailwind.config.js           # Custom agricultural color palette (agri, harvest, earth)
 ├── vite.config.js               # Vite bundler configuration
+├── backend/
+│   └── main.py                  # FastAPI REST service (Pathology, NPK, NDVI APIs)
 └── src/
     ├── main.jsx                 # Application entry point
     ├── App.jsx                  # Main root layout, tabs, status ticker, and footer
@@ -85,31 +92,30 @@ agrivision/
 
 ### Prerequisites
 - Node.js v18+ (tested on Node.js v24.11.1)
-- npm v10+
+- Python 3.9+ (optional, for backend API)
 
-### Installation & Running Locally
+### 1. Frontend Setup & Launch
+```bash
+# Navigate to project directory
+cd C:\Users\azayv\.gemini\antigravity\scratch\agrivision
 
-1. **Navigate to the project directory**:
-   ```bash
-   cd C:\Users\azayv\.gemini\antigravity\scratch\agrivision
-   ```
+# Start Vite development server
+npm run dev
+# Accessible at http://localhost:5173
 
-2. **Start the development server**:
-   ```bash
-   npm run dev
-   ```
-   Open your browser at `http://localhost:5173`.
+# Build for production
+npm run build
+```
 
-3. **Build for production**:
-   ```bash
-   npm run build
-   ```
+### 2. Python Backend API Setup (Optional)
+```bash
+# Install Python ML & API dependencies
+pip install -r requirements.txt
 
-4. **Preview the production build**:
-   ```bash
-   npm run preview
-   ```
-   Open your browser at `http://localhost:4173`.
+# Start FastAPI server
+uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
+# API Docs accessible at http://localhost:8000/docs
+```
 
 ---
 
